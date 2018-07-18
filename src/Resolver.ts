@@ -1,6 +1,6 @@
 type ResolverFn =
   (rootValue: any, args: any, ctx: any, ...rest: any[]) => any;
-  
+
 /**
  * Represents one resolver in the resolvers object given to makeExecutableSchema.
  * @property {string} key - Dot-notation key of the resolver
