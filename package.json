@@ -10,6 +10,7 @@
     "lint": "tslint -t stylish --project tsconfig.json"
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "typescript": "^2.9.2"
   },
   "devDependencies": {
