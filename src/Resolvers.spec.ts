@@ -1,19 +1,19 @@
-import { Resolvers } from './Resolvers';
 import { Resolver } from './Resolver';
+import { Resolvers } from './Resolvers';
 
-const createResolver = 
-  (key:string, resolver:any) => Object.assign(new Resolver(), {key, resolver});
+const createResolver =
+  (key: string, resolver: any) => Object.assign(new Resolver(), {key, resolver});
 
 describe('Resolvers', () => {
   it('should instantiate given some resolvers', () => {
-    const resolvers:Resolver[] = [];
+    const resolvers: Resolver[] = [];
     expect(new Resolvers(resolvers)).toBeInstanceOf(Resolvers);
   });
-  
+
   it('should instantiate given an empty array', () => {
-    const resolvers:Resolver[] = [];
+    const resolvers: Resolver[] = [];
     expect(new Resolvers(resolvers)).toBeInstanceOf(Resolvers);
-  })
+  });
 
   it('should throw on instantiation given no resolvers', () => {
     expect(() => new Resolvers()).toThrow(TypeError);
@@ -21,10 +21,10 @@ describe('Resolvers', () => {
 
   it('should reduce Resolver[] into a nested resolvers object', () => {
     const resolvers = [
-      createResolver(`Query.theAnswer`, 42)
-    ]
+      createResolver(`Query.theAnswer`, 42),
+    ];
     expect(new Resolvers(resolvers).resolverObject).toEqual({
-      Query: {theAnswer: 42}
+      Query: {theAnswer: 42},
     });
   });
 
@@ -38,8 +38,8 @@ describe('Resolvers', () => {
         createResolver('Query.something.deeply', 42),
         createResolver('Mutation.changeSomething', 123),
       ])).toEqual({
-        Query: { something: {deeply: 42}, },
-        Mutation: { changeSomething: 123, },
+        Mutation: { changeSomething: 123 },
+        Query: { something: {deeply: 42} },
       });
     });
   });
