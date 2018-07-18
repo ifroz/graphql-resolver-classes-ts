@@ -1,0 +1,39 @@
+{
+  "name": "graphql-resolvers-inversify",
+  "version": "0.0.1",
+  "description": "Inversify injectables to aid makeExecutableSchema-ing",
+  "main": "index.js",
+  "author": "ifroz",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.0",
+    "jest": "^23.4.1",
+    "ts-jest": "^23.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "cov",
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,js,jsx}",
+      "!src/**/*.d.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.(js|ts)?(x)",
+      "**/?(*.)+(spec|test).(js|ts)?(x)"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  }
+}
