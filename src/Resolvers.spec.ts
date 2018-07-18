@@ -1,17 +1,32 @@
 import { Resolvers } from './Resolvers';
 import { Resolver } from './Resolver';
 
+const createResolver = 
+  (key:string, resolver:any) => Object.assign(new Resolver(), {key, resolver});
+
 describe('Resolvers', () => {
-  it('should instantiate', () => {
-    expect(new Resolvers()).toBeInstanceOf(Resolvers);
+  it('should instantiate given some resolvers', () => {
+    const resolvers:Resolver[] = [];
+    expect(new Resolvers(resolvers)).toBeInstanceOf(Resolvers);
+  });
+  
+  it('should instantiate given an empty array', () => {
+    const resolvers:Resolver[] = [];
+    expect(new Resolvers(resolvers)).toBeInstanceOf(Resolvers);
+  })
+
+  it('should throw on instantiation given no resolvers', () => {
+    expect(() => new Resolvers()).toThrow(TypeError);
   });
 
-  function createResolver(key, resolverFn) {
-    const resolver = new Resolver();
-    resolver.key = key;
-    resolver.resolver = resolverFn
-    return resolver;
-  }
+  it('should reduce Resolver[] into a nested resolvers object', () => {
+    const resolvers = [
+      createResolver(`Query.theAnswer`, 42)
+    ]
+    expect(new Resolvers(resolvers).resolverObject).toEqual({
+      Query: {theAnswer: 42}
+    });
+  });
 
   describe('#toResolversObject', () => {
     it('[] ==> {}', () => {
@@ -20,8 +35,8 @@ describe('Resolvers', () => {
 
     it('should reduce Resolver objects into a deep object by their key', () => {
       expect(Resolvers.toResolversObject([
-        Object.assign(new Resolver(), { key: 'Query.something.deeply', resolver: 42 }),
-        Object.assign(new Resolver(), { key: 'Mutation.changeSomething', resolver: 123 }),
+        createResolver('Query.something.deeply', 42),
+        createResolver('Mutation.changeSomething', 123),
       ])).toEqual({
         Query: { something: {deeply: 42}, },
         Mutation: { changeSomething: 123, },

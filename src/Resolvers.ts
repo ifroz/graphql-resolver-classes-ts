@@ -5,6 +5,21 @@ import { set } from "lodash";
  * Reduces all Resolver instances into a nested object
  */
 export class Resolvers {
+  private resolvers: object = {};
+  constructor(resolvers: Resolver[]) {
+    Resolvers.validateResolvers(resolvers);
+    this.resolvers = Resolvers.toResolversObject(resolvers);
+  }
+
+  public get resolverObject():object {
+    return this.resolvers;
+  }
+
+  private static validateResolvers(resolvers:any):void {
+    if (Array.isArray(resolvers)) return;
+    throw new TypeError(`Please provide a Resolver[] to Resolvers`);
+  }
+
   /** 
    * Transform (purely) an array of Resolver instances to 
    * a nested object which can be fed to makeExecutableSchema.
