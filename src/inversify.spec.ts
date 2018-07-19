@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import {Container} from 'inversify';
-import {createContainer, PUBSUB, RESOLVER, RESOLVERS } from './inversify';
+import {bindToContainer, PUBSUB, RESOLVER, RESOLVERS} from './inversify';
 
 import {Resolver} from './Resolver';
 import {Resolvers} from './Resolvers';
@@ -11,7 +11,7 @@ const YOUR_KEY = 'Query.some.resolver';
 
 describe('Inversify integration', () => {
   let inversifyContainer: Container;
-  beforeEach(() => { inversifyContainer = createContainer(); });
+  beforeEach(() => { inversifyContainer = bindToContainer(); });
 
   it('should be a Container', () => {
     expect(inversifyContainer).toBeInstanceOf(Container);

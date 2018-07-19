@@ -31,10 +31,9 @@ class PubSubService extends PubSub {
   }
 }
 
-export function createContainer() {
-  const container = new Container();
+export function bindToContainer(container = new Container()) {
   container.bind(PUBSUB).to(PubSubService);
   container.bind(RESOLVERS).to(ResolversService);
   return container;
 }
-export default createContainer();
+export default bindToContainer();
