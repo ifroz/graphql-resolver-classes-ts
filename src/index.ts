@@ -1,3 +1,2 @@
-import { Resolvers } from './Resolvers';
-export default Resolvers;
+export * from './Resolvers';
 export * from './Resolver';

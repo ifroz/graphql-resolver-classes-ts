@@ -20,5 +20,5 @@ export abstract class Resolver {
 
 export class InlineResolver extends Resolver {
   public key = `Mutation`;
-  public resolver = () => ({});
+  public resolver = function inlineResolverFunc() { return {}; };
 }

@@ -15,9 +15,14 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.0",
+    "inversify": "^4.13.0",
     "jest": "^23.4.1",
+    "reflect-metadata": "^0.1.12",
     "ts-jest": "^23.0.1",
     "tslint": "^5.11.0"
+  },
+  "peerDependencies": {
+    "inversify": "^4.13.0"
   },
   "jest": {
     "testEnvironment": "node",

@@ -5,11 +5,6 @@ import { Resolver } from './Resolver';
  * Reduces all Resolver instances into a nested object
  */
 export class Resolvers {
-
-  public get resolverObject(): object {
-    return this.resolvers;
-  }
-
   private static validateResolvers(resolvers: any): void {
     if (Array.isArray(resolvers)) { return; }
     throw new TypeError(`Please provide a Resolver[] to Resolvers`);
@@ -31,4 +26,5 @@ export class Resolvers {
     Resolvers.validateResolvers(resolvers);
     this.resolvers = Resolvers.toResolversObject(resolvers);
   }
+  public getResolvers = () => this.resolvers;
 }

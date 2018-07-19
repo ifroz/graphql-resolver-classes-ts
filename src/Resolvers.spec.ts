@@ -23,7 +23,7 @@ describe('Resolvers', () => {
     const resolvers = [
       createResolver(`Query.theAnswer`, 42),
     ];
-    expect(new Resolvers(resolvers).resolverObject).toEqual({
+    expect(new Resolvers(resolvers).resolvers).toEqual({
       Query: {theAnswer: 42},
     });
   });
