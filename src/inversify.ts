@@ -3,7 +3,7 @@ import {Container, decorate, inject, injectable, multiInject, optional} from 'in
 import {PubSub as BasePubSub } from 'graphql-subscriptions';
 import {PubSub} from './PubSub';
 
-import { InlineResolver, Resolver } from './Resolver';
+import { Resolver } from './Resolver';
 import { Resolvers } from './Resolvers';
 
 export const RESOLVERS = Symbol.for('ResolversService');
@@ -12,7 +12,6 @@ export const PUBSUB = Symbol.for('PubSubService');
 export const PUBSUB_OPTIONS = Symbol.for('PubSubOptions');
 
 decorate(injectable(), Resolver);
-decorate(injectable(), InlineResolver);
 decorate(injectable(), Resolvers);
 decorate(injectable(), BasePubSub);
 decorate(injectable(), PubSub);

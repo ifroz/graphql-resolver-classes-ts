@@ -1,13 +1,12 @@
-import {InlineResolver, Mutation, Query, Resolver, Subscription} from './Resolver';
+import {Mutation, Query, Resolver, Subscription} from './Resolver';
 
-describe('InlineResolver', () => {
+describe('Resolver', () => {
   it('should be a Resolver', () => {
     expect(new Resolver()).toBeInstanceOf(Resolver);
-    expect(new InlineResolver()).toBeInstanceOf(Resolver);
   });
 
   it('has a toResolver method', () => {
-    expect(typeof new InlineResolver().toResolver).toBe('function');
+    expect(typeof new Resolver().toResolver).toBe('function');
   });
 });
 

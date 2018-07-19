@@ -46,10 +46,6 @@ describe('Inversify integration', () => {
     });
   });
 
-  it('InlineResolver should not be exposed', () => {
-    expect(() => inversifyContainer.get(RESOLVER)).toThrow();
-  });
-
   describe('Resolvers', () => {
     it('should be exposed after any resolver is bound', () => {
       inversifyContainer.bind(RESOLVER).to(Resolver);
