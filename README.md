@@ -1,6 +1,6 @@
-# ``graphql-resolvers-inversify` // graphql-resolvers-ts` // ???
+# `graphql-resolvers-inversify`
 
-Typed wrapper above apollo-server/graphql-*/...? to aid Query/Mutation/Subscription and @directive creation.
+Typed wrapper for apollo/graphql to aid Query/Mutation/Subscription and @directive creation.
 
 ## TODO
 
