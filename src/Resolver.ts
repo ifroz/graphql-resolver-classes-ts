@@ -14,9 +14,9 @@ export abstract class Resolver {
   }
 }
 
-// export class Query extends Resolver {}
-// export class Mutation extends Resolver {}
-// export class Subscription extends Resolver {}
+export abstract class Query extends Resolver {}
+export abstract class Mutation extends Resolver {}
+export abstract class Subscription extends Resolver {}
 
 export class InlineResolver extends Resolver {
   public key = `Mutation`;
