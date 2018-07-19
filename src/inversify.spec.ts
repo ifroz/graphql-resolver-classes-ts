@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 
 import {Container} from 'inversify';
-import { createContainer } from './inversify';
-import { RESOLVER, RESOLVERS } from './inversify';
+import {createContainer, PUBSUB, RESOLVER, RESOLVERS } from './inversify';
 
 import {Resolver} from './Resolver';
 import {Resolvers} from './Resolvers';
+import {PubSub} from './PubSub';
 
 const YOUR_KEY = 'Query.some.resolver';
 
@@ -58,6 +58,12 @@ describe('Inversify integration', () => {
 
     it('should throw given no bound resolver', () => {
       expect(() => inversifyContainer.get(RESOLVERS)).toThrow();
+    });
+  });
+
+  describe('PubSub', () => {
+    it('should be exposed', () => {
+      expect(inversifyContainer.get(PUBSUB)).toBeInstanceOf(PubSub);
     });
   });
 });
