@@ -1,5 +1,7 @@
 # `graphql-resolver-classes-ts`
 
+[![CircleCI](https://circleci.com/gh/ifroz/graphql-resolver-classes-ts.svg?style=svg)](https://circleci.com/gh/ifroz/graphql-resolver-classes-ts)
+
 Typed wrapper for apollo/graphql to aid Query/Mutation/Subscription and @directive creation.
 
 ## Getting Started
