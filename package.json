@@ -1,20 +1,24 @@
 {
-  "name": "graphql-resolvers-inversify",
+  "name": "graphql-resolver-classes-ts",
   "version": "0.0.1",
   "description": "Inversify injectables to aid makeExecutableSchema-ing",
   "main": "src/index.ts",
   "author": "ifroz",
   "license": "MIT",
   "scripts": {
+    "t": "yarn test --watch",
     "test": "jest",
-    "lint": "tslint -t stylish --project tsconfig.json"
+    "lint": "tslint -t stylish --project tsconfig.json",
+    "precommit": "yarn test && yarn lint"
   },
   "dependencies": {
+    "graphql-subscriptions": "^0.5.8",
     "lodash": "^4.17.10",
     "typescript": "^2.9.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.0",
+    "husky": "^0.14.3",
     "inversify": "^4.13.0",
     "jest": "^23.4.1",
     "reflect-metadata": "^0.1.12",

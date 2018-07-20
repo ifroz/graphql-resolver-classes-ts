@@ -1,14 +1,22 @@
-import {Container, decorate, injectable, multiInject} from 'inversify';
+import {Container, decorate, inject, injectable, multiInject, optional} from 'inversify';
 
-import { InlineResolver, Resolver } from './Resolver';
+import {PubSub as BasePubSub } from 'graphql-subscriptions';
+import {PubSub} from './PubSub';
+
+import { Resolver } from './Resolver';
 import { Resolvers } from './Resolvers';
+import {Subscription} from './Subscription';
 
 export const RESOLVERS = Symbol.for('ResolversService');
 export const RESOLVER = Symbol.for('ResolverService');
+export const PUBSUB = Symbol.for('PubSubService');
+export const PUBSUB_OPTIONS = Symbol.for('PubSubOptions');
+export const SUBSCRIPTION = Symbol.for('Subscription');
 
 decorate(injectable(), Resolver);
-decorate(injectable(), InlineResolver);
 decorate(injectable(), Resolvers);
+decorate(injectable(), BasePubSub);
+decorate(injectable(), PubSub);
 
 @injectable()
 class ResolversService extends Resolvers {
@@ -17,10 +25,24 @@ class ResolversService extends Resolvers {
   }
 }
 
-export function createContainer() {
-  const container = new Container();
+@injectable()
+class PubSubService extends PubSub {
+  constructor(@inject(PUBSUB_OPTIONS) @optional() options?: any) {
+    super(options);
+  }
+}
+
+@injectable()
+class BroadcastSubscriptionService extends Subscription {
+  constructor(@inject(PUBSUB) pubsub: PubSub) {
+    super(pubsub);
+  }
+}
+
+export function bindToContainer(container = new Container()) {
+  container.bind(PUBSUB).to(PubSubService);
   container.bind(RESOLVERS).to(ResolversService);
-// container.bind(RESOLVER).to(InlineResolver);
+  container.bind(SUBSCRIPTION).to(BroadcastSubscriptionService);
   return container;
 }
-export default createContainer();
+export default bindToContainer();

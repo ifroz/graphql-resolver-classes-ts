@@ -1,17 +1,18 @@
 import 'reflect-metadata';
 
 import {Container} from 'inversify';
-import { createContainer } from './inversify';
-import { RESOLVER, RESOLVERS } from './inversify';
+import {bindToContainer, PUBSUB, RESOLVER, RESOLVERS, SUBSCRIPTION} from './inversify';
 
+import {PubSub} from './PubSub';
 import {Resolver} from './Resolver';
 import {Resolvers} from './Resolvers';
+import {Subscription} from './Subscription';
 
 const YOUR_KEY = 'Query.some.resolver';
 
 describe('Inversify integration', () => {
   let inversifyContainer: Container;
-  beforeEach(() => { inversifyContainer = createContainer(); });
+  beforeEach(() => { inversifyContainer = bindToContainer(); });
 
   it('should be a Container', () => {
     expect(inversifyContainer).toBeInstanceOf(Container);
@@ -46,10 +47,6 @@ describe('Inversify integration', () => {
     });
   });
 
-  it('InlineResolver should not be exposed', () => {
-    expect(() => inversifyContainer.get(RESOLVER)).toThrow();
-  });
-
   describe('Resolvers', () => {
     it('should be exposed after any resolver is bound', () => {
       inversifyContainer.bind(RESOLVER).to(Resolver);
@@ -58,6 +55,18 @@ describe('Inversify integration', () => {
 
     it('should throw given no bound resolver', () => {
       expect(() => inversifyContainer.get(RESOLVERS)).toThrow();
+    });
+  });
+
+  describe('PubSub', () => {
+    it('should be exposed', () => {
+      expect(inversifyContainer.get(PUBSUB)).toBeInstanceOf(PubSub);
+    });
+  });
+
+  describe('Subscription', () => {
+    it('should be exposed', () => {
+      expect(inversifyContainer.get(SUBSCRIPTION)).toBeInstanceOf(Subscription);
     });
   });
 });

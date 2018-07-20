@@ -1,2 +1,4 @@
 export * from './Resolvers';
-export * from './Resolver';
+export { Query, Mutation } from './Resolver';
+export * from './Subscription';
+export * from './PubSub';

@@ -1,65 +1,44 @@
-# ``graphql-resolvers-inversify` // graphql-resolvers-ts` // ???
+# `graphql-resolver-classes-ts`
 
-Typed wrapper above apollo-server/graphql-*/...? to aid Query/Mutation/Subscription and @directive creation.
+[![CircleCI](https://circleci.com/gh/ifroz/graphql-resolver-classes-ts.svg?style=svg)](https://circleci.com/gh/ifroz/graphql-resolver-classes-ts)
 
-## TODO
-
-* Fill this readme template
-* Create a proper TODO list
+Typed wrapper for apollo/graphql to aid Query/Mutation/Subscription and @directive creation.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Install the package by running `yarn add graphql-resolver-classes-ts`.
 
-### Prerequisites
+## Usage
 
-What things you need to install the software and how to install them
+```typescript
+import { Resolvers, Query, Mutation, Subscription } from 'graphql-resolver-classes-ts';
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+class MyQuery extends Query {
+  key = `Query.currentUser`
+}
 ```
 
-And repeat
+### Usage with inversify
+
+
+### `Query` and `Mutation`
+
+...
+
+### `Subscription`
+
+```typescript
+
+@injectable()
+class CurrentUserSubscription extends Subscription {
+  @inject(PUBSUB) protected pubsub: PubSub;
+  
+  public readonly key = 'Subscription.notificationAdded.subscribe';
+  public readonly filter = (payload, args, ctx) =>
+    ctx.currentUser && ctx.currentUser.id === payload.owner;
+}
 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
