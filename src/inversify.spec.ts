@@ -1,11 +1,12 @@
 import 'reflect-metadata';
 
 import {Container} from 'inversify';
-import {bindToContainer, PUBSUB, RESOLVER, RESOLVERS} from './inversify';
+import {bindToContainer, PUBSUB, RESOLVER, RESOLVERS, SUBSCRIPTION} from './inversify';
 
 import {PubSub} from './PubSub';
 import {Resolver} from './Resolver';
 import {Resolvers} from './Resolvers';
+import {Subscription} from './Subscription';
 
 const YOUR_KEY = 'Query.some.resolver';
 
@@ -60,6 +61,12 @@ describe('Inversify integration', () => {
   describe('PubSub', () => {
     it('should be exposed', () => {
       expect(inversifyContainer.get(PUBSUB)).toBeInstanceOf(PubSub);
+    });
+  });
+
+  describe('Subscription', () => {
+    it('should be exposed', () => {
+      expect(inversifyContainer.get(SUBSCRIPTION)).toBeInstanceOf(Subscription);
     });
   });
 });

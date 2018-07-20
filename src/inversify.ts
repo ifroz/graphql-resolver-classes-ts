@@ -5,11 +5,13 @@ import {PubSub} from './PubSub';
 
 import { Resolver } from './Resolver';
 import { Resolvers } from './Resolvers';
+import {Subscription} from './Subscription';
 
 export const RESOLVERS = Symbol.for('ResolversService');
 export const RESOLVER = Symbol.for('ResolverService');
 export const PUBSUB = Symbol.for('PubSubService');
 export const PUBSUB_OPTIONS = Symbol.for('PubSubOptions');
+export const SUBSCRIPTION = Symbol.for('Subscription');
 
 decorate(injectable(), Resolver);
 decorate(injectable(), Resolvers);
@@ -30,9 +32,17 @@ class PubSubService extends PubSub {
   }
 }
 
+@injectable()
+class BroadcastSubscriptionService extends Subscription {
+  constructor(@inject(PUBSUB) pubsub: PubSub) {
+    super(pubsub);
+  }
+}
+
 export function bindToContainer(container = new Container()) {
   container.bind(PUBSUB).to(PubSubService);
   container.bind(RESOLVERS).to(ResolversService);
+  container.bind(SUBSCRIPTION).to(BroadcastSubscriptionService);
   return container;
 }
 export default bindToContainer();
