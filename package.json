@@ -6,6 +6,7 @@
   "author": "ifroz",
   "license": "MIT",
   "scripts": {
+    "t": "yarn test --watch",
     "test": "jest",
     "lint": "tslint -t stylish --project tsconfig.json",
     "precommit": "yarn test && yarn lint"
