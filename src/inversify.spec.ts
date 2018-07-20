@@ -3,9 +3,9 @@ import 'reflect-metadata';
 import {Container} from 'inversify';
 import {bindToContainer, PUBSUB, RESOLVER, RESOLVERS} from './inversify';
 
+import {PubSub} from './PubSub';
 import {Resolver} from './Resolver';
 import {Resolvers} from './Resolvers';
-import {PubSub} from './PubSub';
 
 const YOUR_KEY = 'Query.some.resolver';
 

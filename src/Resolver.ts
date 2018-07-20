@@ -10,7 +10,7 @@ type ResolverFn =
  */
 export abstract class Resolver {
   public abstract key: string;
-  protected abstract resolver: ResolverFn;
+  protected abstract resolver?: ResolverFn;
   public toResolver() {
     return this.resolver;
   }

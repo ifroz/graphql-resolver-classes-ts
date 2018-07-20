@@ -1,4 +1,4 @@
-import {Mutation, Query, Resolver, Subscription} from './Resolver';
+import {Mutation, Query, Resolver} from './Resolver';
 
 describe('Resolver', () => {
   it('should be a Resolver', () => {
@@ -19,11 +19,5 @@ describe('Query', () => {
 describe('Mutation', () => {
   it('should be a Resolver', () => {
     expect(new Mutation()).toBeInstanceOf(Resolver);
-  });
-});
-
-describe('Subscription', () => {
-  it('should be a Resolver', () => {
-    expect(new Subscription()).toBeInstanceOf(Resolver);
   });
 });
