@@ -1,5 +1,5 @@
 {
-  "name": "graphql-resolvers-inversify",
+  "name": "graphql-resolver-classes-ts",
   "version": "0.0.1",
   "description": "Inversify injectables to aid makeExecutableSchema-ing",
   "main": "src/index.ts",

@@ -1,15 +1,15 @@
-# `graphql-resolvers-inversify`
+# `graphql-resolver-classes-ts`
 
 Typed wrapper for apollo/graphql to aid Query/Mutation/Subscription and @directive creation.
 
 ## Getting Started
 
-Install the package by running `yarn add graphql-resolvers-inversify`.
+Install the package by running `yarn add graphql-resolver-classes-ts`.
 
 ## Usage
 
 ```typescript
-import { Resolvers, Query, Mutation, Subscription } from 'graphql-resolvers-inversify';
+import { Resolvers, Query, Mutation, Subscription } from 'graphql-resolver-classes-ts';
 
 class MyQuery extends Query {
   key = `Query.currentUser`
