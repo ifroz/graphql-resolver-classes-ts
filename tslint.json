@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "quotemark": [true, "single", "avoid-escape"],
-        "max-classes-per-file": [true, 5]
+        "max-classes-per-file": [true, 5],
+        "no-console": [true, "log", "error"]
     },
     "rulesDirectory": []
 }
