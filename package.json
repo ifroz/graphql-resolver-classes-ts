@@ -10,7 +10,7 @@
     "t": "yarn test --watch",
     "test": "jest",
     "lint": "tslint -t stylish --project tsconfig.json",
-    "precommit": "yarn build || yarn test && yarn lint"
+    "precommit": "yarn build || yarn add dist && yarn test && yarn lint"
   },
   "dependencies": {
     "graphql-subscriptions": "^0.5.8",
